@@ -1,6 +1,6 @@
 .item{
-    background:"#93FFE8";
-    padding:"10px";
-    border-bottom-style:"1px #268094 dotted";
-    text-align:"center"
+    background:#93FFE8;
+    padding:10px;
+    border-top:1px black solid;
+    text-align:center
 }

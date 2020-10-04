@@ -2,10 +2,10 @@ import React from 'react';
 import CommentItem from './CommentItem';
 
 
-const Comments = ({comments}) => {
+const Comments = ({comments, deleteComment}) => {
 
 return (
-comments.map((item) => (<CommentItem key ={item.id} comment={item}/>))
+comments.map((item) => (<CommentItem key ={item.id} comment={item} deleteComment={deleteComment}/>))
 )
 
 }

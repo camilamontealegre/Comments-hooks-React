@@ -19,8 +19,8 @@ function App() {
 ])
 
 useEffect(() => {
-fetch('https://jsonplaceholder.typicode.com/comments?_limit=5')
-.then (response => response.json() )
+fetch('https://jsonplaceholder.typicode.com/comments?_limit=3') //cuando se ejecute
+.then (response => response.json() ) //Entonces haga lo que está en esta línea, response es la respuesta del servidor
 .then (result => setCommments(result))
 .then (json => console.log('componentDidMount', json))
 }, [])
@@ -28,7 +28,7 @@ fetch('https://jsonplaceholder.typicode.com/comments?_limit=5')
   const addBody = (comment) => {
   comment.id = comments.length +1
   const newComment = [...comments, comment];
-  //setCommments(newComments); esto es para no tener que usar la API
+  //setCommments(newComments); esta linea  es para no tener que usar la API
 
 //usando la API para agregar comentario:
 fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -45,13 +45,23 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
   .then(setCommments(newComment));
 
   }
+const deleteComment = (id) => {
+    fetch ('https://jsonplaceholder.typicode.com/comments' + id, {
+      method: 'DELETE'
+    })  
+    .then((response) => response.json())
+    .then(() =>{
+      const updatedComment = comments.filter((comment)=> comment.id !== id)//esto simula un ciclo for 
+      setCommments(updatedComment)
+    })
+  }
 
   return (
     <div className="App">
       <Title/>
       <About/>
-          <AddComment addBody={addBody}/>
-          <Comments comments={comments}/>
+          <AddComment addBody={addBody}/> <br/>
+          <Comments deleteComment={deleteComment}  comments={comments}/>
 
     </div>
   );

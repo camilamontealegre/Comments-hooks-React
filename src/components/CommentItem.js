@@ -1,11 +1,11 @@
 import React  from 'react';
 import './CommentItem.css'
 
-const CommentItem = ({comment}) =>{
+const CommentItem = ({comment, deleteComment}) =>{ //comment y deleteComment son props escritas con destructuring
 
-return <div>
-<div className="item">{comment.body}</div>
-<button>X</button>
+return <div className="item">
+<div>{comment.body}</div>
+<button onClick= {()=>deleteComment(comment.id)}>X</button>
 </div>
 };
 
